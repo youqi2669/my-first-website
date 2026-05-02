@@ -2,10 +2,75 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>我的测试网站</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔐 私密网站</title>
+    <style>
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        #passwordBox {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        #passwordBox input {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+        }
+        #passwordBox button {
+            padding: 10px 20px;
+            background: #48484a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #contentBox {
+            display: none;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
+
+<div id="passwordBox">
+    <h2>🔐 请输入访问密码</h2>
+    <input type="password" id="passwordInput" placeholder="输入密码">
+    <br>
+    <button onclick="checkPassword()">验证</button>
+    <p id="errorMsg" style="color:red;display:none;">密码错误，请重试。</p>
+</div>
+
+<div id="contentBox">
     <h1>🎉 恭喜！网站发布成功！</h1>
     <p>如果你能看到这行字，说明你的 GitHub Pages 已经正常工作了。</p>
+</div>
+
+<script>
+    // 在这里设置你的密码 (你可以随意修改)
+    const SECRET_PASSWORD = "123456";
+
+    function checkPassword() {
+        var input = document.getElementById("passwordInput").value;
+        if (input === SECRET_PASSWORD) {
+            document.getElementById("passwordBox").style.display = "none";
+            document.getElementById("contentBox").style.display = "block";
+        } else {
+            document.getElementById("errorMsg").style.display = "block";
+        }
+    }
+</script>
+
 </body>
 </html>
